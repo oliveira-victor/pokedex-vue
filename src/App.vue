@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import Header from './components/Header.vue'
+import MainContent from './components/MainContent.vue';
 </script>
 
 <template>
   <div class="wrapper">
     <div class="container">
       <Header />
+      <MainContent />?
     </div>
   </div>
 </template>
