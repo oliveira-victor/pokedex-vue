@@ -1,14 +1,35 @@
 <script setup lang="ts">
-import Header from './components/Header.vue'
+import { ref } from 'vue';
+import Header from './components/Header.vue';
 import MainContent from './components/MainContent.vue';
 import Footer from './components/Footer.vue';
+
+/* interface DataItem {
+  id: number;
+  name: string;
+  order: number
+} */
+
+const pokemon = ref<DataItem | null>(null); // Hold a single DataItem, not an array
+
+const fetchData = async (query: string): Promise<void> => {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
+    const data = await response.json();
+    console.log(data)
+    pokemon.value = data; // Map response to DataItem
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    pokemon.value = null; // Reset in case of error
+  }
+};
 </script>
 
 <template>
   <div class="wrapper">
     <div class="container">
-      <Header />
-      <MainContent />
+      <Header @fetch-data="fetchData" />
+      <MainContent :data="pokemon" />
       <Footer />
     </div>
   </div>

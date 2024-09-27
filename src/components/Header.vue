@@ -1,18 +1,28 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
+const searchQuery = ref<string>('');
+
+const emit = defineEmits(['fetch-data']);
+
+const submitForm = () => {
+    emit('fetch-data', searchQuery.value);
+};
 </script>
 
 <template>
     <header class="header">
         <h1>Pokedex</h1>
-        <form class="form">
-            <input type="text" placeholder="Pesquisar" required>
-            <button class="submit-btn" type="submit"><img class="search-icon" src="../assets/pokeball.webp"
-                    alt="Pokeball icon"></button>
+        <form class="form" @submit.prevent="submitForm">
+            <input v-model="searchQuery" type="text" placeholder="Pesquisar" required />
+            <button class="submit-btn" type="submit">
+                <img class="search-icon" src="../assets/pokeball.webp" alt="Pokeball icon" />
+            </button>
         </form>
     </header>
 </template>
 
-<style>
+<style scoped>
 .header {
     background-color: #ac1c1c;
     background-image: url(../assets/waves.webp);
@@ -52,7 +62,7 @@ input {
 
 .search-icon {
     height: 40px;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
 }
 
 .search-icon:hover {
