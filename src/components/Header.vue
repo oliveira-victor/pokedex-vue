@@ -37,6 +37,7 @@ input {
     border-radius: 20px;
     padding: 5px 10px;
     font-size: 16px;
+    outline: none;
 }
 
 .submit-btn {
