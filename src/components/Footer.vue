@@ -16,5 +16,6 @@
     border-radius: 0 0 30px 30px;
     padding: 10px 40px;
     font-size: 12px;
+    text-align: center;
 }
 </style>

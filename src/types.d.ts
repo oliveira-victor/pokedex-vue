@@ -1,3 +1,11 @@
+type PokeType = {
+    name: string
+}
+
+type Types = {
+    type: PokeType
+}
+
 type Front = {
     front_default: string
 }
@@ -15,4 +23,5 @@ type DataItem = {
     name: string
     order: number
     sprites: Sprites
+    types: Types[]
 }

@@ -15,15 +15,21 @@ const props = defineProps<{
     <main>
         <div class="pokedex-container" v-if="data">
             <div class="img-container">
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg"
+                <img :src="data.sprites.other.dream_world.front_default"
                     alt="">
             </div>
             <ul class="poke-info">
                 <li>
-                    Nome
+                    <span class="list-title">Name: </span>
+                    <span class="list-info">{{ data.name }}</span>
                 </li>
                 <li>
-                    Ordem
+                    <span class="list-title">Order: </span>
+                    <span class="list-info">{{ data.order }}</span>
+                </li>
+                <li>
+                    <span class="list-title">Type: </span>
+                    <span class="list-info">{{ data.types[0].type.name }}</span>
                 </li>
             </ul>
         </div>
@@ -36,20 +42,39 @@ const props = defineProps<{
 <style scoped>
 main {
     padding: 20px 40px;
+    /* height: 600px; */
 }
 
 .pokedex-container {
-    background-color: blue;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 40px;
 }
 
 .img-container {
-    background-color: red;
+    height: 90%;
+}
+
+.img-container img {
+    /* min-height: 600px; */
+    width: 400px;
+    object-fit: cover;
 }
 
 .poke-info {
-    background-color: green;
+    /* background-color: #d3d3d3;
+    padding: 12px;
+    border-radius: 4px; */
     list-style: none;
+    font-size: 26px;
+    line-height: 1.8;
+}
+
+.list-title {
+    font-weight: bold;
+}
+
+.list-info {
+    text-transform: capitalize;
 }
 </style>
