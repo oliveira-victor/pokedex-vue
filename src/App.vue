@@ -47,7 +47,7 @@ const fetchData = async (query: string): Promise<void> => {
 }
 
 .container {
-  max-width: 1024px;
+  max-width: 840px;
   width: 100%;
   border-radius: 30px;
   background-color: #fff;

@@ -1,11 +1,4 @@
 <script setup lang="ts">
-// Define interface for the Pokémon data
-/* interface DataItem {
-    id: number;
-    name: string;
-} */
-
-// Expect a single DataItem or null
 const props = defineProps<{
     data: DataItem | null;
 }>();
@@ -16,20 +9,22 @@ const props = defineProps<{
         <div class="pokedex-container" v-if="data">
             <div class="img-container">
                 <img :src="data.sprites.other.dream_world.front_default"
-                    alt="">
+                    :alt="data.name">
             </div>
             <ul class="poke-info">
                 <li>
-                    <span class="list-title">Name: </span>
+                    <span class="list-title">Name: </span><br>
                     <span class="list-info">{{ data.name }}</span>
                 </li>
                 <li>
-                    <span class="list-title">Order: </span>
+                    <span class="list-title">Order: </span><br>
                     <span class="list-info">{{ data.order }}</span>
                 </li>
                 <li>
                     <span class="list-title">Type: </span>
-                    <span class="list-info">{{ data.types[0].type.name }}</span>
+                    <ul class="poke-info">
+                        <li class="list-types" v-for="(item,index) in data.types" :key="index">{{ item.type.name }}</li>
+                    </ul>
                 </li>
             </ul>
         </div>
@@ -42,39 +37,37 @@ const props = defineProps<{
 <style scoped>
 main {
     padding: 20px 40px;
-    /* height: 600px; */
 }
 
 .pokedex-container {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 80px;
 }
 
 .img-container {
     height: 90%;
 }
 
-.img-container img {
-    /* min-height: 600px; */
-    width: 400px;
-    object-fit: cover;
-}
+/* .img-container img {
+} */
 
 .poke-info {
-    /* background-color: #d3d3d3;
-    padding: 12px;
-    border-radius: 4px; */
-    list-style: none;
-    font-size: 26px;
-    line-height: 1.8;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+.list-types {
+    margin-left: 20%;
 }
 
 .list-title {
     font-weight: bold;
+    font-size: 16px;
 }
 
 .list-info {
     text-transform: capitalize;
+    margin-left: 20%;
 }
 </style>

@@ -3,7 +3,7 @@
 
 <template>
     <footer class="footer">
-        Desenvolvido por Victor F. Oliveira
+        Desenvolvido por <a href="https://victoroliveira.vercel.app/" target="_blank">Victor F. Oliveira</a>
     </footer>
 </template>
 
@@ -17,5 +17,14 @@
     padding: 10px 40px;
     font-size: 12px;
     text-align: center;
+}
+
+a {
+    color: #f3ff48;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 </style>
