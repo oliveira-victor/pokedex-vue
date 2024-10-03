@@ -4,12 +4,6 @@ import Header from './components/Header.vue';
 import MainContent from './components/MainContent.vue';
 import Footer from './components/Footer.vue';
 
-/* interface DataItem {
-  id: number;
-  name: string;
-  order: number
-} */
-
 const pokemon = ref<DataItem | null>(null); // Hold a single DataItem, not an array
 
 const fetchData = async (query: string): Promise<void> => {
@@ -39,6 +33,7 @@ const fetchData = async (query: string): Promise<void> => {
 .wrapper {
   max-width: 1920px;
   width: 100%;
+  margin: 20px auto;
   min-height: 100vh;
   display: flex;
   justify-content: center;

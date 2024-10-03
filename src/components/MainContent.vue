@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+const { data } = defineProps<{
     data: DataItem | null;
 }>();
 </script>
@@ -45,12 +45,16 @@ main {
     gap: 80px;
 }
 
+@media (max-width: 767px) {
+    .pokedex-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 .img-container {
     height: 90%;
 }
-
-/* .img-container img {
-} */
 
 .poke-info {
     font-size: 22px;
