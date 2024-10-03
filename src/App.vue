@@ -10,7 +10,6 @@ const fetchData = async (query: string): Promise<void> => {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);
     const data = await response.json();
-    console.log(data)
     pokemon.value = data; // Map response to DataItem
   } catch (error) {
     console.error('Error fetching data:', error);
